@@ -1,25 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './Componentes/Navbar/Navbar';
+import ItenListContainer from './Componentes/ItemList/ItenListContainer';
 
 function App() {
+  
+    let saludo = "!Bienvenido al sistema Brando!";
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      
+      <Navbar />
+      <ItenListContainer saludo={saludo} />
     </div>
   );
 }
+
 
 export default App;

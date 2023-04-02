@@ -1,0 +1,24 @@
+.ContainerNavbar{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 10vh;
+    background-color: #383839;
+}
+.imgLogo{
+    width: 120px;
+    padding-left: 35px;
+}
+.ContainerUl{
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+}
+.ContainerUl li{
+    list-style-type: none;
+    color: #ffffff;
+    padding: 0 50px;
+}
+.ContainerUl li:hover{
+    color: #d58504;
+}
