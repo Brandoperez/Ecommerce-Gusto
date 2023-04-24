@@ -1,20 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import { Navbar } from './Componentes/Navbar/Navbar';
-import ItenListContainer from './Componentes/ItemList/ItenListContainer';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import  {Navbar}  from "./Componentes/Navbar/Navbar";
+import ItemListContainer from "./Componentes/ItemList/ItemListContainer";
+import { ItemDetailContainer } from "./Componentes/ItemDetail/ItemDetailContainer";
+
 
 function App() {
-  
-    let saludo = "!Bienvenido al sistema Brando!";
+
 
   return (
-    <div className="App">
-      
-      <Navbar />
-      <ItenListContainer saludo={saludo} />
-    </div>
+    <BrowserRouter>
+        <Routes>
+            <Route element={<Navbar />}>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/category/:categoryName" element={<ItemListContainer />} />
+              <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+              <Route path="*" element={<h1>La ruta seleccionada no existe.</h1>} />
+            </Route>
+        </Routes>
+    </BrowserRouter>
   );
 }
-
 
 export default App;

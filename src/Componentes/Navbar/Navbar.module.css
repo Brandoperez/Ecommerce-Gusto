@@ -2,11 +2,11 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 10vh;
+    height: 15vh;
     background-color: #383839;
 }
 .imgLogo{
-    width: 120px;
+    width: 92px;
     padding-left: 35px;
 }
 .ContainerUl{
@@ -14,11 +14,14 @@
     align-items: center;
     text-transform: uppercase;
 }
-.ContainerUl li{
-    list-style-type: none;
+.ContainerUl a{
+    text-decoration: none;
     color: #ffffff;
     padding: 0 50px;
 }
 .ContainerUl li:hover{
+    color: #d58504;
+}
+.active{
     color: #d58504;
 }
