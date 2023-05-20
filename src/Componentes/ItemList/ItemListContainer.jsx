@@ -1,32 +1,51 @@
 import ItemList from "./ItemList";
-import {products} from "../../ProductsMosk";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { RiseLoader } from "react-spinners";
+import { dataBase } from "../../firebaseConfig";
+import {getDocs, collection, query, where} from "firebase/firestore";
 
 
 const ItemListContainer = ( ) => {
 
-    let [items, setItems] = useState([]);
+    const [items, setItems] = useState([]);
     const{categoryName} = useParams();
 
    useEffect( () => {
 
-    const productsFiltered = products.filter(prod => prod.category === categoryName);
-    const tarea = new Promise((resolve, reject) => {
-    resolve(categoryName ? productsFiltered : products);
-    //reject("No se pudo resolver");
-});
+    let filtrado;
+    const itemsCollection = collection(dataBase, "products");
 
-tarea
-.then((res) => {setItems(res)})
-.catch((error) => {console.log("Catch:", error)});
-}, [categoryName])
+    if(categoryName){
+        const productFiltered = query(itemsCollection, where("category", "==", categoryName))
+        filtrado = productFiltered;
+    }else{
+        filtrado = itemsCollection;
+    }
+
+    getDocs(filtrado)
+    .then((res) => {
+        const products = res.docs.map( product => {
+            return {
+                ...product.data(), id: product.id
+            }
+        }) 
+        setItems(products)
+    }).catch((err) => console.log(err))
+    
+}, [categoryName]);
 
     return (
-    <div>
-        <ItemList items = {items} />
+        <div>
+        {items.length === 0 ? (
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <RiseLoader color="#a2a2a2" margin={5}/>
+          </div>
+        ) : (
+          <ItemList items={items} />
+        )}
 
-    </div>
+      </div>
     );
 }
 

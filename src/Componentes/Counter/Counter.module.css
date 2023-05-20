@@ -1,0 +1,22 @@
+.Controles{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Controles button{
+    margin: 0px 20px;
+    width: 30px;
+    height: 30px;
+    border-radius: 10%;
+    font-size: 18px;
+    background-color: #f3eaea;
+}
+.contButton{
+    display: flex;
+    justify-content: center;
+}
+.botonCard{
+    background-color: #a2a2a2!important;
+    margin: 0 5px!important;
+    color: #000000!important;
+}

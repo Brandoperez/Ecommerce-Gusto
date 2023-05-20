@@ -21,7 +21,6 @@ export const ItemCard = ({item}) => {
         </Typography>
       </CardContent>
       <CardActions className={styles.contButton}>
-        <Button className={styles.botonCard} size="small">Agregar</Button>
        <Link to={`/itemDetail/${item.id}`}>
         <Button className={styles.botonCard} size="small">Ver Más</Button></Link> 
       </CardActions>
